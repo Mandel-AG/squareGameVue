@@ -18,7 +18,12 @@ export default {
   name: 'App',
   data(){
     return{
-      
+      sequence: [],
+      hautGauche: false,
+      hautDroite: false,
+      basGauche: false,
+      basDroite: false,
+      squareMapping: ["hautGauche", "hautDroite", "basGauche", "basDroite"]
     }
   }
 }
@@ -32,4 +37,16 @@ export default {
     background-color:#ccc;
     cursor:pointer;
   }
+  .bleu {
+  background-color:blue;
+}
+.rouge {
+  background-color:red;
+}
+.vert {
+  background-color:green;
+}
+.jaune {
+  background-color:yellow;
+}
 </style>
