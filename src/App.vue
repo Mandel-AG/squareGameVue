@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <button @click="newGame">New Game</button>
-    <span>Score : {}</span>
+    <span>Score : {{score}}</span>
     <div>
       <span class="carre" @click="selectSquare('topLeft')" :class="{blue:topLeft}"></span>
       <span class="carre" @click="selectSquare('topRight')" :class="{red:topRight}"></span>
@@ -30,6 +30,12 @@ export default {
       tmp:[]
     }
   },
+  computed:{
+    score(){
+      const value = this.sequence.length -1
+      return (value < 0) ? 0  : value ; 
+    }
+  },
   methods:{
     newGame() {
       this.sequence=[];
@@ -45,11 +51,18 @@ export default {
       this.bottomLeft=false,
       this.bottomRight=false
     },
-    selectSquare(element){
-      if(element === this.tmp[0]){
-        console.log('ok')
+    selectSquare(carre){
+      if(carre === this.tmp[0]){
+        this[carre]=true;
+        setTimeout(()=>{
+          this.allReset()
+          this.tmp.shift()
+          if(!this.tmp[0]){
+            this.nextTurn()
+          }
+        },400)
       } else {
-        console.log('pas bon')
+        alert('perdu')
       }
     },
     playSequence(element){
@@ -58,7 +71,9 @@ export default {
           this.allReset()
           this.tmp.shift()
           if(this.tmp[0]){
-            this.playSequence(this.tmp[0])
+            setTimeout(()=>{
+              this.playSequence(this.tmp[0])
+            },400)
           }else{
             this.tmp=[...this.sequence]
           }
