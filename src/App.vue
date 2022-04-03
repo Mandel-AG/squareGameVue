@@ -1,12 +1,12 @@
 <template>
   <div id="app">
     <div>
-    <span class="carre"></span>
-    <span class="carre"></span>
+    <span class="carre" :class="{blue:topLeft}"></span>
+    <span class="carre" :class="{red:topRight}"></span>
   </div>
   <div>
-    <span class="carre"></span>
-    <span class="carre"></span>
+    <span class="carre" :class="{green:bottomLeft}"></span>
+    <span class="carre" :class="{yellow:bottomRight}"></span>
   </div>
   </div>
 </template>
@@ -19,11 +19,11 @@ export default {
   data(){
     return{
       sequence: [],
-      hautGauche: false,
-      hautDroite: false,
-      basGauche: false,
-      basDroite: false,
-      squareMapping: ["hautGauche", "hautDroite", "basGauche", "basDroite"]
+      topLeft: false,
+      topRight: false,
+      bottomLeft: false,
+      bottomRight: false,
+      squareMapping: ["topLeft", "topRight", "bottomLeft", "bottomRight"]
     }
   }
 }
@@ -36,17 +36,18 @@ export default {
     height:200px;
     background-color:#ccc;
     cursor:pointer;
+    margin: 1em;
   }
-  .bleu {
+  .blue {
   background-color:blue;
 }
-.rouge {
+.red {
   background-color:red;
 }
-.vert {
+.green {
   background-color:green;
 }
-.jaune {
+.yellow {
   background-color:yellow;
 }
 </style>
